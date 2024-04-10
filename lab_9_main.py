@@ -10,6 +10,16 @@ def encoder(string):
         ans += f'{num}'
     return ans
 
+def decoder(input):
+    my_list = []
+    for number in input:
+        my_list.append(int(number) - 3)
+    my_string = ''
+    for item in my_list:
+        my_string += str(item)
+    return my_string
+
+
 if __name__ == '__main__':
     while True:
         print('''Menu
@@ -17,14 +27,17 @@ if __name__ == '__main__':
 1. Encode
 2. Decode
 3. Quit\n''')
-        menu_input = int(input('Please enter an option:'))
-        password = input("Please enter your password to encode:")
-        print("Your password has been encoded and stored!")
-        if menu_input == 1:
-            password = encoder(password)
-        elif menu_input == 2:
-            pass
-            #fixme
-            #print(f'The encoded password is {password}, and the original password is {please do this!}.')
-        elif menu_input == 3:
+        menu_input = int(input('Please enter an option: '))
+        if menu_input == 3:
             quit()
+        elif menu_input == 1:
+            password = input("Please enter your password to encode: ")
+            encoded_password = encoder(password)
+            print("Your password has been encoded and stored!")
+            print()
+            continue
+        elif menu_input == 2:
+            original_password = decoder(encoded_password)
+            print(f'The encoded password is {encoded_password}, and the original password is {original_password}.')
+            print()
+            continue
